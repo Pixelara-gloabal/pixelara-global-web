@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Rounded Base Container: Ink (#0B1220) with subtle Primary (#2563EB) border -->
+  <rect width="64" height="64" rx="16" fill="#0B1220" />
+  <rect x="0.5" y="0.5" width="63" height="63" rx="15.5" stroke="#2563EB" stroke-opacity="0.3" />
+
+  <!-- Pixel Grid Accent Nodes -->
+  <rect x="14" y="14" width="8" height="8" rx="2" fill="#2563EB" />
+  <rect x="42" y="14" width="8" height="8" rx="2" fill="#7C3AED" />
+
+  <!-- Modern Geometric 'P' Mark -->
+  <path
+    d="M20 18H36C42.6274 18 48 23.3726 48 30C48 36.6274 42.6274 42 36 42H28V50H20V18ZM28 34H36C38.2091 34 40 32.2091 40 30C40 27.7909 38.2091 26 36 26H28V34Z"
+    fill="#FFFFFF"
+  />
+
+  <!-- Active Accent Pip: Primary Electric Blue (#2563EB) -->
+  <circle cx="34" cy="30" r="3" fill="#2563EB" />
+</svg>
