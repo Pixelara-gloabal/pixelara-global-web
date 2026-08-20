@@ -64,9 +64,15 @@ src/
 
 The Pixelara brand mark lives at `src/assets/pixelara-mark.svg`. It is bundled locally with the site, so no external image service is required at runtime.
 
-## Deployment
+## Deploy to Netlify
 
-Build the app with `npm run build` and deploy the generated `dist/` directory to any static hosting provider that supports single-page applications. Configure the host to serve `index.html` for client-side routes if you later add path-based routing.
+This repository includes `netlify.toml`, so Netlify automatically uses the correct production settings:
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Node version: 20
+
+To create the site, open Netlify and select **Add new project** → **Import an existing project** → **GitHub**. Choose `Pixelara-gloabal/pixelara-global-web`, then deploy without changing the detected build settings. Netlify will build and publish each future push to `main` automatically.
 
 ## License
 
