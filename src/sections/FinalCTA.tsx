@@ -74,19 +74,19 @@ export default function FinalCTA() {
           {/* Left Column: FAQs & Direct Contacts */}
           <div 
             ref={leftRef}
-            className={`lg:col-span-6 space-y-6 animate-on-scroll-left ${leftVisible ? 'is-visible' : ''}`}
+            className={`lg:col-span-6 space-y-6 text-center lg:text-left animate-on-scroll-left ${leftVisible ? 'is-visible' : ''}`}
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-[#2563EB] text-xs font-bold uppercase tracking-wider shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-[#2563EB] text-xs font-bold uppercase tracking-wider shadow-2xs mx-auto lg:mx-0">
               <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
               Clarity &amp; Support
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight leading-tight text-slate-900">
-              Frequently Asked Questions &amp; Support
+              Frequently Asked Questions
             </h2>
 
             {/* Accordion list */}
-            <div className="space-y-3.5 pr-2 pt-2">
+            <div className="space-y-3.5 pr-0 lg:pr-2 pt-2 text-left">
               {FAQ_ITEMS.map((item, idx) => {
                 const isOpen = openFaqIndex === idx;
                 return (
@@ -111,8 +111,8 @@ export default function FinalCTA() {
                     </button>
 
                     {isOpen && (
-                      <div className="px-4.5 pb-4.5 pt-0 text-[13px] text-slate-500 leading-relaxed bg-white">
-                        <p className="pl-6.5 font-medium">{item.answer}</p>
+                      <div className="px-4.5 pb-4.5 pt-0 text-[13px] text-slate-505 leading-relaxed bg-white">
+                        <p className="pl-6.5 font-medium text-slate-500">{item.answer}</p>
                       </div>
                     )}
                   </div>
@@ -123,7 +123,7 @@ export default function FinalCTA() {
             {/* Direct Connect Handles */}
             <div className="pt-4 border-t border-slate-200/60 space-y-3">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block">Direct Assistance Channels</span>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
                 <a
                   href={`https://wa.me/917203075804?text=${whatsappMessage}`}
                   target="_blank"
@@ -165,7 +165,7 @@ export default function FinalCTA() {
           {/* Right Column: Lead Intake Form */}
           <div 
             ref={rightRef}
-            className={`lg:col-span-6 bg-white text-slate-900 p-6 sm:p-8 rounded-[28px] border border-slate-200 shadow-2xl animate-on-scroll-right ${rightVisible ? 'is-visible' : ''}`}
+            className={`lg:col-span-6 bg-white text-slate-900 p-4.5 sm:p-8 rounded-[22px] sm:rounded-[28px] border border-slate-200 shadow-2xl animate-on-scroll-right ${rightVisible ? 'is-visible' : ''}`}
           >
             {submitted ? (
               <div className="py-12 text-center space-y-4">

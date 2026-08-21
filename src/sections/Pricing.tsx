@@ -90,7 +90,7 @@ export default function Pricing({ onOpenCalculator }: PricingProps) {
         <div 
           id="custom-builder" 
           ref={builderRef}
-          className={`p-6 sm:p-10 rounded-[28px] bg-white border border-slate-200/80 shadow-2xl relative overflow-hidden transition-all duration-300 animate-on-scroll ${builderVisible ? 'is-visible' : ''}`}
+          className={`p-4.5 sm:p-10 rounded-[22px] sm:rounded-[28px] bg-white border border-slate-200/80 shadow-2xl relative overflow-hidden transition-all duration-300 animate-on-scroll ${builderVisible ? 'is-visible' : ''}`}
         >
           {/* Subtle builder gradient backglow */}
           <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-to-bl from-blue-50 to-purple-50 rounded-full blur-3xl opacity-60 pointer-events-none" />
@@ -103,7 +103,7 @@ export default function Pricing({ onOpenCalculator }: PricingProps) {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-[#2563EB] border border-blue-200 text-[10px] font-bold uppercase tracking-wider mb-2">
                   <Sliders className="w-3.5 h-3.5 text-[#2563EB]" /> Interactive Scope Builder
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                <h3 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight">
                   Customize Your Package &amp; Features Live
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-500 mt-1.5 font-medium">
@@ -112,10 +112,10 @@ export default function Pricing({ onOpenCalculator }: PricingProps) {
               </div>
 
               {/* Live Price Calculator Display Pill */}
-              <div className="p-5 rounded-[22px] bg-slate-900 text-white shadow-xl shrink-0 text-right min-w-[200px] relative overflow-hidden group">
+              <div className="p-4 sm:p-5 rounded-[18px] sm:rounded-[22px] bg-slate-900 text-white shadow-xl shrink-0 text-left md:text-right min-w-[180px] sm:min-w-[200px] relative overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-50" />
                 <span className="text-[9px] uppercase font-bold text-slate-400 block tracking-wider relative z-10">Estimated Scope</span>
-                <span className="text-3xl font-black text-white block mt-0.5 relative z-10">
+                <span className="text-2xl sm:text-3xl font-black text-white block mt-0.5 relative z-10">
                   ₹{totalCustomEstimate.toLocaleString('en-IN')}
                 </span>
                 <span className="text-[10px] text-cyan-300 block mt-1 font-semibold relative z-10">SLA: {7 + extraPages + selectedAddons.length * 2} Business Days</span>
@@ -165,7 +165,7 @@ export default function Pricing({ onOpenCalculator }: PricingProps) {
                           key={opt.id}
                           type="button"
                           onClick={() => toggleAddon(opt.id)}
-                          className={`p-4 rounded-[20px] text-left border transition-all duration-300 flex flex-col justify-between min-h-[110px] cursor-pointer ${
+                          className={`p-3.5 sm:p-4 rounded-[18px] sm:rounded-[20px] text-left border transition-all duration-300 flex flex-col justify-between min-h-[95px] sm:min-h-[110px] cursor-pointer ${
                             isSelected
                               ? 'border-[#2563EB] bg-blue-50/40 shadow-xs ring-1 ring-[#2563EB]/20'
                               : 'border-slate-200 bg-slate-50/50 hover:bg-slate-50 hover:border-blue-200'
@@ -194,7 +194,7 @@ export default function Pricing({ onOpenCalculator }: PricingProps) {
               </div>
 
               {/* Live Scope Summary Box */}
-              <div className="lg:col-span-4 p-6 rounded-[24px] bg-slate-900 text-white border border-slate-800 space-y-5 shadow-2xl relative overflow-hidden">
+              <div className="lg:col-span-4 p-5 sm:p-6 rounded-[20px] sm:rounded-[24px] bg-slate-900 text-white border border-slate-800 space-y-5 shadow-2xl relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-blue-900/10 to-transparent pointer-events-none" />
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cyan-300 relative z-10">
                   <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" /> Customized Scope Breakdown

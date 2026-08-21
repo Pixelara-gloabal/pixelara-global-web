@@ -60,8 +60,8 @@ export default function PortfolioAndReviews() {
           ref={sectionRef}
           className={`flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 animate-on-scroll ${sectionVisible ? 'is-visible' : ''}`}
         >
-          <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-[#2563EB] text-xs font-bold uppercase tracking-wider mb-3 shadow-2xs">
+          <div className="max-w-xl text-center md:text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-[#2563EB] text-xs font-bold uppercase tracking-wider mb-3 shadow-2xs mx-auto md:mx-0">
               <FolderGit2 className="w-4 h-4 text-[#2563EB]" />
               Proven Performance
             </div>
@@ -74,23 +74,23 @@ export default function PortfolioAndReviews() {
           </div>
 
           {/* Toggle Tab Switcher */}
-          <div className="flex bg-white p-1.5 rounded-2xl border border-slate-200 self-start md:self-auto shadow-2xs">
+          <div className="flex bg-white p-1 rounded-2xl border border-slate-200 mx-auto md:mx-0 shadow-2xs">
             <button
               onClick={() => setActiveTab('case-studies')}
-              className={`px-5 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
+              className={`px-4 sm:px-5 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
                 activeTab === 'case-studies'
                   ? 'bg-[#2563EB] text-white shadow-xs'
-                  : 'text-slate-500 hover:text-slate-950'
+                  : 'text-slate-550 hover:text-slate-950'
               }`}
             >
               Case Studies ({caseStudies.length})
             </button>
             <button
               onClick={() => setActiveTab('reviews')}
-              className={`px-5 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
+              className={`px-4 sm:px-5 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
                 activeTab === 'reviews'
                   ? 'bg-[#2563EB] text-white shadow-xs'
-                  : 'text-slate-500 hover:text-slate-950'
+                  : 'text-slate-550 hover:text-slate-950'
               }`}
             >
               Client Reviews (45+)
@@ -100,19 +100,21 @@ export default function PortfolioAndReviews() {
 
         {/* TAB 1: Case Studies Grid */}
         {activeTab === 'case-studies' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-scale-in is-visible">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 animate-scale-in is-visible">
             {caseStudies.map((study, idx) => (
               <div
                 key={idx}
                 className="flex flex-col justify-between rounded-[24px] bg-white border border-slate-200 hover:border-blue-300 card-hover overflow-hidden group shadow-2xs"
               >
                 {/* Visual Browser Header */}
-                <div className="bg-slate-900 p-4 text-white border-b border-slate-800 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Monitor className="w-4 h-4 text-blue-400" />
-                    <span className="text-xs font-bold tracking-tight text-white">{study.title}</span>
+                <div className="bg-slate-900 p-4 text-white border-b border-slate-800 flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <Monitor className="w-4 h-4 text-blue-400 shrink-0" />
+                    <span className="text-xs font-bold tracking-tight text-white truncate max-w-[150px] sm:max-w-none">
+                      {study.title}
+                    </span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 shrink-0">
                     <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                       <TrendingUp className="w-3 h-3" /> {study.outcome}
                     </span>
