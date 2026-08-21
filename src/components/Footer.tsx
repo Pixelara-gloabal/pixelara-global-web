@@ -5,7 +5,7 @@ import { InstagramIcon, LinkedinIcon } from './SocialIcons';
 export default function Footer() {
   return (
     <footer className="bg-white text-slate-500 border-t border-slate-100 text-xs relative overflow-hidden">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-14 relative z-10">
+      <div className="max-w-6xl mx-auto px-5 py-14 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Company Brand Column */}
           <div className="md:col-span-1 space-y-3">
