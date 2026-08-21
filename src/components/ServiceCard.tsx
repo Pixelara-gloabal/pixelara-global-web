@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 export interface ServiceCardProps {
@@ -26,41 +26,41 @@ export default function ServiceCard({
 }: ServiceCardProps) {
   return (
     <div
-      className={`group flex flex-col justify-between p-6 sm:p-8 rounded-[16px] border bg-[#FFFFFF] transition-all duration-200 shadow-sm hover:shadow-md ${
+      className={`group flex flex-col justify-between p-6 sm:p-7 rounded-[22px] bg-white border card-hover h-full ${
         highlighted
-          ? 'border-[#2563EB] ring-2 ring-[#2563EB]/15'
-          : 'border-[#D9E1EC] hover:border-[#2563EB]/40'
+          ? 'border-[#2563EB]/80 ring-2 ring-[#2563EB]/5 shadow-xs'
+          : 'border-slate-200'
       }`}
     >
       <div>
         {/* Top Icon and Scope Badge */}
         <div className="flex items-center justify-between gap-4 mb-6">
-          <div className="w-12 h-12 bg-[#F4F7FB] group-hover:bg-[#2563EB]/10 text-[#2563EB] rounded-[12px] flex items-center justify-center transition-colors">
-            <Icon className="w-6 h-6" />
+          <div className="w-12 h-12 bg-blue-50/80 border border-blue-100/50 text-[#3B82F6] group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-[#3B82F6] group-hover:text-white rounded-[14px] flex items-center justify-center transition-all duration-300">
+            <Icon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
           </div>
-          <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#F4F7FB] border border-[#D9E1EC] text-[#5B6472]">
+          <span className="text-[10px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full bg-slate-50 border border-slate-200 text-slate-500 group-hover:text-[#3B82F6] group-hover:border-[#3B82F6]/30 transition-colors duration-300">
             {badge}
           </span>
         </div>
 
         {/* Title and Narrative Summary */}
-        <h3 className="text-xl font-extrabold text-[#0B1220] tracking-tight mb-2">
+        <h3 className="text-xl font-bold text-slate-900 tracking-tight mb-2.5">
           {title}
         </h3>
-        <p className="text-sm text-[#5B6472] leading-relaxed mb-6">
+        <p className="text-sm text-slate-500 leading-relaxed mb-6 font-medium">
           {description}
         </p>
 
         {/* Deliverables Checklist */}
-        <div className="space-y-2.5 pt-4 border-t border-[#D9E1EC] mb-6">
-          <p className="text-xs font-bold uppercase tracking-wider text-[#0B1220]">
+        <div className="space-y-3 pt-5 border-t border-slate-100 mb-6">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
             Core Deliverables
           </p>
-          <ul className="space-y-2">
+          <ul className="space-y-2.5">
             {deliverables.map((item, idx) => (
-              <li key={idx} className="flex items-center gap-2 text-xs text-[#5B6472]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] shrink-0" />
-                <span>{item}</span>
+              <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-600 font-medium">
+                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                <span className="leading-relaxed">{item}</span>
               </li>
             ))}
           </ul>
@@ -68,16 +68,17 @@ export default function ServiceCard({
       </div>
 
       {/* Commercial Boundary & CTA */}
-      <div className="pt-4 border-t border-[#D9E1EC] flex items-center justify-between gap-4">
+      <div className="pt-5 border-t border-slate-100 flex items-center justify-between gap-4">
         <div>
-          <span className="block text-[10px] uppercase font-bold text-[#5B6472]">Pricing Model</span>
-          <span className="text-sm font-extrabold text-[#0B1220]">{priceTag}</span>
+          <span className="block text-[9px] uppercase font-bold text-slate-400">Pricing Model</span>
+          <span className="text-sm font-black text-slate-900">{priceTag}</span>
         </div>
         <a
           href={ctaHref}
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2563EB] hover:text-blue-700 transition-colors group-hover:translate-x-0.5 transform duration-150"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#3B82F6] hover:text-[#2563EB] transition-colors duration-200"
         >
-          {ctaText} <ArrowRight className="w-3.5 h-3.5" />
+          <span>{ctaText}</span> 
+          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
         </a>
       </div>
     </div>

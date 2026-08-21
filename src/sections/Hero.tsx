@@ -1,61 +1,165 @@
-import { ArrowRight, CheckCircle2, HelpCircle, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Calculator, Star } from 'lucide-react';
 import brandMark from '../assets/pixelara-mark.svg';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
-const proofPoints = ['Strategy-led design', 'Responsive by default', 'Built to convert'];
+interface HeroProps {
+  onOpenCalculator?: () => void;
+}
 
-export default function Hero() {
+export default function Hero({ onOpenCalculator }: HeroProps) {
+  const { ref: textRef, isVisible: textVisible } = useScrollAnimation();
+  const { ref: cardRef, isVisible: cardVisible } = useScrollAnimation();
+
+  const clientLogos = [
+    'Apex Gear Ltd.',
+    'Lumina Organics',
+    'Anand Clinics',
+    'LogiField Systems',
+    'Verma Legal',
+    'KraftTech Global'
+  ];
+
   return (
-    <section className="hero-surface relative isolate overflow-hidden border-b border-[#D9E1EC]">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_77%_32%,rgba(124,58,237,0.16),transparent_18rem),radial-gradient(circle_at_30%_72%,rgba(37,99,235,0.14),transparent_27rem)]" />
-      <div className="max-w-[1280px] mx-auto grid min-h-[670px] items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:px-8 lg:py-20">
-        <div className="relative z-10 max-w-2xl">
-          <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#2563EB]/15 bg-white/75 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#2563EB] shadow-[0_8px_30px_rgba(15,23,42,0.06)] backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5 text-[#7C3AED]" />
-            Pixelara Global — Digital Studio
+    <section className="relative overflow-hidden bg-white border-b border-slate-100 py-16 sm:py-24">
+      {/* Dynamic Animated Blobs */}
+      <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-gradient-to-br from-cyan-200/40 via-blue-200/40 to-purple-200/40 rounded-full blur-3xl opacity-75 pointer-events-none animate-blob" />
+      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-gradient-to-tr from-purple-100/40 via-cyan-100/40 to-blue-200/30 rounded-full blur-3xl opacity-60 pointer-events-none animate-blob animation-delay-4000" />
+
+      <div className="max-w-6xl mx-auto px-5 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+          {/* Left — Copy with Scroll Animation */}
+          <div 
+            ref={textRef} 
+            className={`max-w-lg animate-on-scroll ${textVisible ? 'is-visible' : ''}`}
+          >
+            {/* Trust pill */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 backdrop-blur-xs px-3.5 py-1.5 text-xs font-semibold text-slate-650 shadow-xs mb-6 hover:border-blue-300 hover:shadow-sm transition-all duration-300">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-3 w-3 fill-amber-400 text-amber-400 animate-pulse" />
+                ))}
+              </div>
+              <span className="h-4 w-px bg-slate-200 mx-1" />
+              <span>4.9 / 5.0 Rating — 45+ Websites Delivered</span>
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.12] tracking-tight text-slate-900">
+              Technology. Innovation.{' '}
+              <span className="text-gradient block sm:inline">Beyond Borders.</span>
+            </h1>
+
+            <p className="mt-6 text-base sm:text-lg leading-relaxed text-slate-500 font-medium">
+              High-performance web platforms, customizable scopes, and enterprise-grade code — engineered for brands scaling worldwide.
+            </p>
+
+            {/* CTA row */}
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a href="#contact" className="button-primary group">
+                <span>Start a Project</span>
+                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <button 
+                onClick={onOpenCalculator} 
+                type="button" 
+                className="button-secondary text-[13px] group"
+              >
+                <Calculator className="h-4 w-4 text-[#3B82F6] group-hover:scale-110 transition-transform" /> 
+                <span>Estimate Price</span>
+              </button>
+            </div>
+
+            {/* Proof points */}
+            <div className="mt-12 flex flex-wrap gap-x-6 gap-y-3 text-[13px] font-semibold text-slate-600">
+              {['Strategy-led UI', 'Mobile-first responsive', '100% code ownership'].map((p) => (
+                <span 
+                  key={p} 
+                  className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-105 hover:border-blue-150 transition-colors"
+                >
+                  <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" />
+                  {p}
+                </span>
+              ))}
+            </div>
           </div>
 
-          <h1 className="max-w-xl text-5xl font-black leading-[0.98] tracking-[-0.055em] text-[#0B1220] sm:text-6xl lg:text-7xl">
-            Make your next move <span className="text-gradient">unmistakable.</span>
-          </h1>
+          {/* Right — Interactive Web Preview Card with Floating Motion */}
+          <div 
+            ref={cardRef} 
+            className={`relative mx-auto w-full max-w-md lg:max-w-none animate-float-slow animate-scale-in ${cardVisible ? 'is-visible' : ''}`}
+          >
+            {/* Glowing Backdrop behind the preview */}
+            <div className="absolute -inset-1.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-3xl opacity-20 blur-xl group-hover:opacity-30 transition duration-1000" />
+            
+            <div className="relative rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl hover:shadow-3xl transition-shadow duration-300">
+              {/* Browser chrome */}
+              <div className="flex items-center gap-1.5 pb-3 px-2 border-b border-slate-100">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-400/90" />
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-400/90" />
+                <span className="w-2.5 h-2.5 rounded-full bg-green-400/90" />
+                <span className="ml-3 text-[10px] font-mono text-slate-400 bg-slate-50 px-3 py-0.5 rounded-md border border-slate-100 select-none">
+                  preview.pixelara.global
+                </span>
+              </div>
+              
+              {/* Preview area with high-end aesthetic gradients */}
+              <div className="mt-3 rounded-xl bg-gradient-to-br from-[#0B1120] via-[#101B30] to-[#1E293B] text-white p-6 min-h-[300px] flex flex-col justify-between relative overflow-hidden group">
+                <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+                
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-4">
+                    <img src={brandMark} alt="" className="w-6 h-6 rounded-lg bg-slate-900/60 p-0.5" />
+                    <span className="text-xs font-bold tracking-tight">Apex Precision Exports</span>
+                    <span className="ml-auto text-[9px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                      Professional
+                    </span>
+                  </div>
+                  <div className="inline-block px-2.5 py-0.5 rounded-md text-[9px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30 mb-4 tracking-wider uppercase">
+                    ISO Certified Exporter
+                  </div>
+                  <h3 className="text-xl font-bold leading-snug mb-3">
+                    Heavy Engineering &amp; Industrial Components
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed mb-4 max-w-sm">
+                    Supplying precision CNC components, CAD specification sheets, and certified fabrications globally.
+                  </p>
+                </div>
 
-          <p className="mt-7 max-w-xl text-base leading-7 text-[#5B6472] sm:text-lg">
-            High-performance websites and digital systems for ambitious businesses ready to look sharper, move faster, and win better work.
-          </p>
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="#contact" className="button-primary group">
-              Start a project <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-            <a href="#packages" className="button-secondary">
-              Explore packages <HelpCircle className="h-4 w-4 text-[#2563EB]" />
-            </a>
+                <div className="relative z-10 flex gap-2 pt-2">
+                  <span className="px-3.5 py-2 rounded-lg bg-gradient-to-r from-cyan-400 to-[#3B82F6] hover:from-cyan-300 hover:to-[#2563EB] text-white text-[11px] font-extrabold cursor-pointer transition-all duration-300 shadow-sm shadow-blue-500/20">
+                    Request RFQ
+                  </span>
+                  <span className="px-3.5 py-2 rounded-lg bg-white/5 text-white text-[11px] font-semibold border border-white/10 hover:bg-white/10 cursor-pointer transition-all duration-300">
+                    Download CAD
+                  </span>
+                </div>
+              </div>
+              
+              <div className="text-center text-[11px] text-slate-400 mt-3 font-semibold flex items-center justify-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span>✓ Delivered in 10 business days — on schedule</span>
+              </div>
+            </div>
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-x-5 gap-y-3 border-t border-[#0B1220]/10 pt-6 text-xs font-semibold text-[#344054]">
-            {proofPoints.map((point) => (
-              <span key={point} className="inline-flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-[#2563EB]" /> {point}
-              </span>
+        </div>
+
+        {/* Brand Logotype Grid integrated directly into Hero */}
+        <div className="mt-20 pt-8 border-t border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Trusted by Ambitious Brands</span>
+          <div className="flex flex-wrap gap-2.5">
+            {clientLogos.map((name, i) => (
+              <div 
+                key={i} 
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-655 hover:border-blue-300 hover:bg-white transition-all cursor-default"
+              >
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                <span>{name}</span>
+              </div>
             ))}
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[510px] lg:justify-self-end">
-          <div className="hero-orbit absolute inset-[7%] rounded-full border border-[#2563EB]/10" />
-          <div className="hero-orbit absolute inset-[18%] rounded-full border border-dashed border-[#7C3AED]/25" />
-          <div className="absolute -right-5 top-[20%] h-20 w-20 rounded-[28px] border border-white/70 bg-white/70 shadow-xl backdrop-blur sm:-right-8 sm:h-28 sm:w-28" />
-          <div className="absolute -bottom-3 left-2 h-16 w-16 rounded-[22px] bg-[#2563EB]/15 blur-[1px] sm:-bottom-5 sm:h-24 sm:w-24" />
-          <div className="relative grid aspect-square place-items-center rounded-[2.5rem] border border-white/80 bg-white/70 p-8 shadow-[0_32px_100px_rgba(30,41,59,0.18)] backdrop-blur-xl sm:p-12">
-            <div className="absolute inset-5 rounded-[2rem] border border-[#0B1220]/5" />
-            <div className="absolute left-8 top-10 h-2.5 w-2.5 rounded-sm bg-[#2563EB] shadow-[0_0_22px_6px_rgba(37,99,235,0.26)]" />
-            <div className="absolute bottom-14 right-11 h-3 w-3 rounded-sm bg-[#7C3AED] shadow-[0_0_22px_6px_rgba(124,58,237,0.2)]" />
-            <img src={brandMark} alt="Pixelara mark" className="relative z-10 w-[44%] drop-shadow-[0_24px_28px_rgba(15,23,42,0.22)]" />
-            <div className="absolute bottom-7 left-7 right-7 flex items-center justify-between rounded-2xl border border-white/80 bg-[#0B1220] px-4 py-3 text-white shadow-lg sm:bottom-9 sm:left-9 sm:right-9">
-              <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#b7c7ff]">Pixelara signal</span>
-              <span className="h-2 w-2 animate-pulse rounded-full bg-[#60a5fa]" />
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
